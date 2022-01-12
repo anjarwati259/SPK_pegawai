@@ -34,4 +34,21 @@ class Penilaian_model extends CI_Model
 	public function insert_penilaian($data){
 		$this->db->insert_batch('penilaian', $data);
 	}
+	public function cek_pegawai($nip){
+		$this->db->select('*');
+		$this->db->from('penilaian');
+		$this->db->where('nip',$nip);
+		$query = $this->db->get();
+		return $query->row();
+	}
+	public function edit_penilaian($data){
+		foreach ($data as $key => $value) {
+
+			$set = array('id_nilai_kriteria' => $value['id_nilai_kriteria'], 
+						'tanggal' => $value['tanggal']);
+			$this->db->where('nip', $value['nip']);
+			$this->db->where('id_kriteria', $value['id_kriteria']);
+			$this->db->update('penilaian',$set);
+		}
+	}
 }

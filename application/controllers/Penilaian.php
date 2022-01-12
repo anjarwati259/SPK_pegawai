@@ -10,6 +10,8 @@ class Penilaian extends CI_Controller {
 	}
 	public function index()
 	{
+		
+		//print_r($data);
 		$total = $this->penilaian_model->count_kriteria()->total;
 		if($total%2==0){
 			$jml_limit = $total/2;
@@ -57,6 +59,23 @@ class Penilaian extends CI_Controller {
 		$this->penilaian_model->insert_penilaian($data2);
 		echo json_encode('sukses');
 	}
+	public function edit(){
+		$kriteria = $this->penilaian_model->listKriteria();
+		$nip = $this->input->post('0[nip]');
+		$index = 0;
+		$data2 =[];
+		foreach ($kriteria as $key => $value) {
+			$kriteria = $index.'['.$value->nama_kriteria.']';
+			$data2[] = array( 	'id_nilai_kriteria' => $this->input->post($kriteria),
+								'id_kriteria'		=> $value->id_kriteria,
+								'nip'				=> $nip,
+								'tanggal'			=> date('Y-m-d')
+			 );
+			$index++;
+		}
+		 $this->penilaian_model->edit_penilaian($data2);
+		echo json_encode('sukses');
+	}
 	public function hasil(){
 		$kriteria = $this->penilaian_model->listKriteria();
 		$pegawai = $this->admin_model->pegawai();
@@ -66,5 +85,16 @@ class Penilaian extends CI_Controller {
 						'total'	=> $this->penilaian_model->count_kriteria()->total,
                         'isi' => 'admin/hasil_penilaian' );
         $this->load->view('admin/layout/wrapper',$data, FALSE);
+	}
+	public function cek_pegawai(){
+		$nip = $this->input->post('nip');
+
+		$pegawai = $this->penilaian_model->cek_pegawai($nip);
+		if($pegawai){
+			echo json_encode('true');
+		}else{
+			echo json_encode('false');
+		}
+		
 	}
 }

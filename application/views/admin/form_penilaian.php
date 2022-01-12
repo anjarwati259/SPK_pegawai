@@ -101,3 +101,31 @@
     </div>
   </div>
 </section>
+
+<!-- modal alert -->
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Alert!!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php foreach ($kriteria as $key => $value) {?>
+        <input type="text" name="" id="M<?php echo $value->nama_kriteria ?>">
+      <?php } ?>
+      <input type="text" name="" id="Mnip">
+        <p>Pegawai Yang anda pilih sudah pernah dinilai!! apakah anda ingin menilai ulang? Tekan <strong style="color: red;">OK</strong> jika ingin menilai ulang, tekan <strong style="color: red;">Cancel</strong> untuk membatalkan.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Cancel</button>
+        <button type="submit" id="btn-ok" class="btn btn-danger">OK</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
