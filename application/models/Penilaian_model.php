@@ -51,4 +51,18 @@ class Penilaian_model extends CI_Model
 			$this->db->update('penilaian',$set);
 		}
 	}
+	public function cek_hasil($nip){
+		$this->db->select('*');
+		$this->db->from('hasil');
+		$this->db->where('nip',$nip);
+		$query = $this->db->get();
+		return $query->row();
+	}
+	public function insert_hasil($data){
+		$this->db->insert('hasil', $data);
+	}
+	public function update_hasil($data){
+		$this->db->where('nip', $data['nip']);
+		$this->db->update('hasil',$data);
+	}
 }

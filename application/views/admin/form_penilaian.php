@@ -55,17 +55,19 @@
                       ?>
                       <div class="form-group">
                       <label for="exampleInputEmail1"><?php echo $value->nama_kriteria ?> - <?php echo $value->keterangan ?></label>
-                      <select class="form-control" id="<?php echo $value->nama_kriteria ?>" style="max-width: 100%">
-                        <option value="0" selected="selected">---Pilih---</option>
-                        <?php foreach ($nilai_kriteria as $key => $value) {?>
-                        <option value="<?php echo $value->id_nilai_kriteria ?>"><?php echo $value->keterangan ?></option>
+                      <div class="form-group">
+                        <?php foreach ($nilai_kriteria as $key => $value2) { ?>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" value="<?php echo $value2->id_nilai_kriteria ?>" type="radio" name="<?php echo $value->nama_kriteria ?>">
+                          <label class="form-check-label"><?php echo $value2->nilai ?></label>
+                        </div>
                       <?php } ?>
-                      </select>
+                      </div>
                     </div>
                   <?php } ?>
                   </div>
                   <!-- col -->
-                  <div class="col-md-6">
+                   <div class="col-md-6">
                     <?php foreach ($kriteria_2 as $key => $value) {
                       $id_kriteria = $value->id_kriteria;
                       $this->db->select('*');
@@ -75,15 +77,17 @@
                       ?>
                       <div class="form-group">
                       <label for="exampleInputEmail1"><?php echo $value->nama_kriteria ?> - <?php echo $value->keterangan ?></label>
-                      <select class="form-control" id="<?php echo $value->nama_kriteria ?>" style="max-width: 100%">
-                        <option value="0" selected="selected">---Pilih---</option>
-                        <?php foreach ($nilai_kriteria_2 as $key => $value) {?>
-                        <option value="<?php echo $value->id_nilai_kriteria ?>"><?php echo $value->keterangan ?></option>
+                      <div class="form-group">
+                        <?php foreach ($nilai_kriteria_2 as $key => $value2) { ?>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" value="<?php echo $value2->id_nilai_kriteria ?>" type="radio" name="<?php echo $value->nama_kriteria ?>">
+                          <label class="form-check-label"><?php echo $value2->nilai ?></label>
+                        </div>
                       <?php } ?>
-                      </select>
+                      </div>
                     </div>
                   <?php } ?>
-                  </div>
+                  </div> 
                   <!-- col -->
                 </div>
               </div>
@@ -124,8 +128,6 @@
         <button type="submit" id="btn-ok" class="btn btn-danger">OK</button>
       </div>
     </div>
-    <!-- /.modal-content -->
   </div>
-  <!-- /.modal-dialog -->
 </div>
 <!-- /.modal -->

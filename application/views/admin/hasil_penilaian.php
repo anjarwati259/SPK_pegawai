@@ -134,6 +134,7 @@
                 <td><?php echo $value->nama ?></td>
                 <?php foreach ($data as $key => $value2) {
                   $id_kriteria = $value2->id_kriteria;
+                  $nip = $value2->nip;
                   $nilai = $value2->nilai;
                   $this->db->select('penilaian.*,nilai_kriteria.nilai as nilai');
                   $this->db->from('penilaian');
@@ -155,6 +156,12 @@
                     $bobot = $value3->bobot;
                   }
                   $hasil = $normalisasi * $bobot;
+                  ?>
+                  <?php  
+                    $this->db->select('*');
+                    $this->db->from('hasil');
+                    $this->db->where('nip', $nip);
+                    $arrhasil = $this->db->get()->result();
                   ?>
                   <td><?php echo $hasil ?></td>
                 <?php } ?>
@@ -178,8 +185,8 @@
           <thead>
             <tr>
               <th>Nama</th>
+              <th>Hasil Penghitungan</th>
               <th>Hasil</th>
-              <!-- <th>Ranking</th> -->
             </tr>
           </thead>
           <tbody>
@@ -219,9 +226,13 @@
                   $hasil = $normalisasi * $bobot;
                   $hasil2+=$hasil;
                 }
-                $arrhasil = array($hasil2);
+                $arrhasil = array('nip' => $nip,
+                                  'hasil' => $hasil2,
+                                  'tanggal' => date('Y-m-d'));
+                simpan_hasil($nip,$arrhasil);
                   ?>
                   <td><?php echo $hasil2; ?></td>
+                  <td><span class="badge bg-danger">Cukup</span></td>
               </tr>
             <?php } ?>
           </tbody>

@@ -30,7 +30,7 @@
 			for ( var key in cures ) {
 				cure = cures[key].nama_kriteria;
 				kriteria = cures[key].nama_kriteria;
-				c = $('#'+kriteria+' option:selected').val();
+				c = $('input[name='+kriteria+']:checked').val();
 				data[key] = {[cure]:c,nip:nip};
 				$("#M"+kriteria).val(c);
 				if(c==0){
@@ -78,7 +78,8 @@
 				for ( var key in cures ) {
 					cure = cures[key].nama_kriteria;
 					kriteria = cures[key].nama_kriteria;
-					c = $('#'+kriteria+' option:selected').val();
+					c = $('input[name='+kriteria+']:checked').val();
+					// c = $('#'+kriteria+' option:selected').val();
 					data[key] = {[cure]:c,nip:nip};
 				}
 
