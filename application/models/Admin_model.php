@@ -85,17 +85,19 @@ class Admin_model extends CI_Model
 		$this->db->update('kriteria',$data);
 	}
 	public function get_kriteria($id){
-		$this->db->select('*');
+		$this->db->select('nilai_kriteria.*,bobot.bobot');
 		$this->db->from('nilai_kriteria');
-		$this->db->where('id_kriteria',$id);
+		$this->db->join('bobot','bobot.id_kriteria = nilai_kriteria.id_kriteria', 'left');
+		$this->db->where('nilai_kriteria.id_kriteria',$id);
+		$this->db->or_where('bobot.id_kriteria',$id);
 		$this->db->limit(1);
 		$query = $this->db->get();
 		return $query->row();
 	}
 	public function del_kriteriaid($id){
 		$this->db->delete('nilai_kriteria', array('id_kriteria' => $id));
-		$this->db->delete('kriteria', array('id_kriteria' => $id));
 		$this->db->delete('bobot', array('id_kriteria' => $id));
+		$this->db->delete('kriteria', array('id_kriteria' => $id));
 	}
 	public function del_kriteria($id){
 		$this->db->where('id_kriteria', $id);

@@ -125,7 +125,7 @@ class Admin extends CI_Controller {
 	public function kriteria()
 	{
 		$kriteria = $this->admin_model->kriteria();
-		$data = array('title' => 'Data Pegawai',
+		$data = array('title' => 'Data Kriteria',
 						'kriteria' => $kriteria,
                         'isi' => 'admin/data_kriteria' );
         $this->load->view('admin/layout/wrapper',$data, FALSE);
@@ -172,6 +172,7 @@ class Admin extends CI_Controller {
 	}
 	public function del_kriteria($id){
 		$data_id = $this->admin_model->get_kriteria($id);
+		print_r($data_id);
 		if($data_id){
 			$this->admin_model->del_kriteriaid($id);
 		}else{
@@ -186,7 +187,7 @@ class Admin extends CI_Controller {
 	{
 		$nilai_kriteria = $this->admin_model->nilai_kriteria();
 		$kriteria = $this->admin_model->kriteria();
-		$data = array('title' => 'Data Pegawai',
+		$data = array('title' => 'Data Nilai Kriteria',
 						'nilai_kriteria' => $nilai_kriteria,
 						'kriteria'	=> $kriteria,
                         'isi' => 'admin/data_nilai_kriteria' );
@@ -248,7 +249,7 @@ class Admin extends CI_Controller {
 	{
 		$bobot = $this->admin_model->bobot();
 		$kriteria = $this->admin_model->kriteria();
-		$data = array('title' => 'Data Pegawai',
+		$data = array('title' => 'Data Bobot',
 						'bobot' => $bobot,
 						'kriteria'	=> $kriteria,
                         'isi' => 'admin/data_bobot' );
