@@ -65,4 +65,10 @@ class Penilaian_model extends CI_Model
 		$this->db->where('nip', $data['nip']);
 		$this->db->update('hasil',$data);
 	}
+	public function get_hasil(){
+		$this->db->select('MAX(hasil) as hasil_max');
+		$this->db->from('hasil');
+		$query = $this->db->get();
+		return $query->row();
+	}
 }

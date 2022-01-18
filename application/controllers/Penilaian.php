@@ -79,12 +79,15 @@ class Penilaian extends CI_Controller {
 	public function hasil(){
 		$kriteria = $this->penilaian_model->listKriteria();
 		$pegawai = $this->admin_model->pegawai();
+		$get_hasil = $this->penilaian_model->get_hasil();
 		$data = array('title' => 'Hasil Penilaian',
 						'kriteria' => $kriteria,
 						'pegawai'	=> $pegawai,
+						'max_hasil'		=> $get_hasil,
 						'total'	=> $this->penilaian_model->count_kriteria()->total,
                         'isi' => 'admin/hasil_penilaian' );
         $this->load->view('admin/layout/wrapper',$data, FALSE);
+        // print_r($get_hasil);
 	}
 	public function cek_pegawai(){
 		$nip = $this->input->post('nip');

@@ -232,13 +232,39 @@
                 simpan_hasil($nip,$arrhasil);
                   ?>
                   <td><?php echo $hasil2; ?></td>
-                  <td><span class="badge bg-danger">Cukup</span></td>
+                  <?php 
+                    $this->db->select('*');
+                    $this->db->from('hasil');
+                    $this->db->where('nip', $nip);
+                    $get_hasil = $this->db->get()->row();
+                   ?>
+                  <td>
+                    <?php $hasil_saw = $get_hasil->hasil; 
+                      if($hasil_saw < 0.4){
+                    ?>
+                    <button type="submit" class="btn btn-danger btn-sm"><?php echo "Kurang" ?></button>
+                  <?php }else if($hasil_saw >=0.4 && $hasil_saw <0.7){ ?>
+                    <button type="submit" class="btn btn-warning btn-sm"><?php echo "Cukup"; ?></button>
+                  <?php }else if($hasil_saw>=0.7){ ?>
+                    <button type="submit" class="btn btn-success btn-sm"><?php echo "Baik"; ?></button>
+                <?php } ?>
+                  </td>
               </tr>
             <?php } ?>
           </tbody>
         </table>
       </div>
       <!-- /.card-body -->
+      <?php 
+      $max = $max_hasil->hasil_max;
+      $this->db->select('hasil.hasil,pegawai.nama');
+      $this->db->from('hasil');
+      $this->db->join('pegawai','pegawai.nip = hasil.nip', 'left');
+      $this->db->like('hasil.hasil', $max);
+      $rekom = $this->db->get()->row();
+      //print_r($rekom);
+       ?>
+      <p style="padding: 20px; font-size: 20px;">Jadi Rekomendasi Karyawan Terbaik Jatuh Kepada <b style="color: red;"><?php echo $rekom->nama ?></b> dengan Nilai <b style="color: red;"><?php echo $rekom->hasil ?></b></p>
     </div>
     <!-- /.card -->
 

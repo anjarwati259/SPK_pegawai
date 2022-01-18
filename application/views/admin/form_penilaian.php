@@ -118,9 +118,9 @@
       </div>
       <div class="modal-body">
         <?php foreach ($kriteria as $key => $value) {?>
-        <input type="text" name="" id="M<?php echo $value->nama_kriteria ?>">
+        <input type="hidden" name="" id="M<?php echo $value->nama_kriteria ?>">
       <?php } ?>
-      <input type="text" name="" id="Mnip">
+      <input type="hidden" name="" id="Mnip">
         <p>Pegawai Yang anda pilih sudah pernah dinilai!! apakah anda ingin menilai ulang? Tekan <strong style="color: red;">OK</strong> jika ingin menilai ulang, tekan <strong style="color: red;">Cancel</strong> untuk membatalkan.</p>
       </div>
       <div class="modal-footer">

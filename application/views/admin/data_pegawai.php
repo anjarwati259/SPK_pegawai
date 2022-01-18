@@ -39,7 +39,7 @@
 	            	<td><?php echo $value->golongan ?></td>
 	            	<td>
 	            		<!-- detail -->
-		                <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button>
+		                <!-- <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-info-circle" aria-hidden="true"></i></button> -->
 		                <!-- edit -->
 		                <button type="button" class="btn btn-success btn-sm btn-edit" 
 		                data-nip="<?php echo $value->nip; ?>"
