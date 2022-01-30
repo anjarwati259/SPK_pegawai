@@ -12,9 +12,9 @@
         <!-- /.card-tools -->
       </div>
       <!-- /.card-header -->
-      <div class="card-body p-0">
+      <div class="card-body p-1">
       	<div class="scrollmenu">
-	        <table class="table">
+	        <table class="table" id="example2">
 	          <thead>
 	            <tr>
 	              <th style="width: 10px">No</th>

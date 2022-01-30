@@ -13,8 +13,8 @@
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/admin/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/css/toastr.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/admin/datatable/datatables.min.css">
   <style type="text/css">
-
     /*csroll table*/
     .scrollmenu {
       background-color: none;
@@ -23,9 +23,6 @@
 
     }
     .scrollmenu table {
-      /*display: inline-block;*/
-      /*color: white;*/
-      /*text-align: center;*/
       padding: 14px;
       text-decoration: none;
     }

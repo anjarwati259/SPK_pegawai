@@ -43,7 +43,6 @@ class Penilaian_model extends CI_Model
 	}
 	public function edit_penilaian($data){
 		foreach ($data as $key => $value) {
-
 			$set = array('id_nilai_kriteria' => $value['id_nilai_kriteria'], 
 						'tanggal' => $value['tanggal']);
 			$this->db->where('nip', $value['nip']);

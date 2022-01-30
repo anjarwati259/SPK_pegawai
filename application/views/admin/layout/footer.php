@@ -25,6 +25,7 @@
 <script src="<?php echo base_url() ?>assets/admin/dist/js/demo.js"></script>
 <script src="<?php echo base_url()?>assets/js/bootstrap-datepicker.min.js"></script>
 <script src="<?php echo base_url() ?>/assets/js/toastr.min.js"></script>
+<script src="<?php echo base_url()?>assets/admin/datatable/datatables.min.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 <script type="text/javascript">
   $('#tgl-lahir').datepicker({
@@ -35,6 +36,25 @@
       autoclose: true,
       format:'yyyy-mm-dd'
     });
+  $(function () {
+    $('#example1').DataTable({
+      'paging'      : false,
+      'lengthChange': false,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false,
+    });
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': true,
+      'searching'   : true,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false,
+      'pageLength'  : 50
+    });
+  });
 </script>
 <?php include(APPPATH.'views/admin/ajax/main_ajax.php'); ?>
 <?php include(APPPATH.'views/admin/ajax/ajax_penilaian.php'); ?>

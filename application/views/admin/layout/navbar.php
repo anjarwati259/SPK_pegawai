@@ -21,6 +21,8 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- hak akses admin -->
+        <?php if($this->session->userdata('hak_akses')=='1'){?>
           <li class="nav-item">
           <a href="<?php echo base_url('admin') ?>" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
@@ -80,6 +82,43 @@
               </p>
             </a>
         </li>
+        <!-- hak akses petugas 1 -->
+      <?php }else if($this->session->userdata('hak_akses')=='2'){ ?>
+        <li class="nav-item">
+          <a href="<?php echo base_url('admin/pegawai') ?>" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Data Pegawai
+              </p>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?php echo base_url('penilaian/hasil') ?>" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Hasil Penilaian
+              </p>
+            </a>
+        </li>
+        <!-- hak akses pegawai 2 -->
+      <?php }else if($this->session->userdata('hak_akses')=='3'){ ?>
+        <li class="nav-item">
+          <a href="<?php echo base_url('penilaian') ?>" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Penilaian
+              </p>
+            </a>
+        </li>
+        <li class="nav-item">
+          <a href="<?php echo base_url('penilaian/hasil') ?>" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Hasil Penilaian
+              </p>
+            </a>
+        </li>
+    <?php } ?>
         <li class="nav-item">
           <a href="<?php echo base_url('login/logout') ?>" class="nav-link">
               <i class="nav-icon fas fa-sign-out-alt"></i>

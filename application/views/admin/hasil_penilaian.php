@@ -180,8 +180,8 @@
         <h3 class="card-title">Perangkingan</h3>
       </div>
       <!-- /.card-header -->
-      <div class="card-body table-responsive p-0" style="height: 300px;">
-        <table class="table table-head-fixed text-nowrap table-bordered">
+      <div class="card-body table-responsive p-4" style="height: 300px;">
+        <table id="example1" class="table text-nowrap table-bordered">
           <thead>
             <tr>
               <th>Nama</th>
@@ -262,7 +262,7 @@
       $this->db->join('pegawai','pegawai.nip = hasil.nip', 'left');
       $this->db->like('hasil.hasil', $max);
       $rekom = $this->db->get()->row();
-      //print_r($rekom);
+      // print_r($rekom);
        ?>
       <p style="padding: 20px; font-size: 20px;">Jadi Rekomendasi Karyawan Terbaik Jatuh Kepada <b style="color: red;"><?php echo $rekom->nama ?></b> dengan Nilai <b style="color: red;"><?php echo $rekom->hasil ?></b></p>
     </div>

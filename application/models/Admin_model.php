@@ -62,8 +62,9 @@ class Admin_model extends CI_Model
 		return $query->row();
 	}
 	public function del_pegawai($nip){
-		$this->db->where('nip', $nip);
-		$this->db->delete('pegawai');
+		$this->db->delete('penilaian', array('nip' => $nip));
+		$this->db->delete('hasil', array('nip' => $nip));
+		$this->db->delete('pegawai', array('nip' => $nip));
 	}
 	public function del_penilaian($nip){
 		$this->db->delete('penilaian', array('nip' => $nip));

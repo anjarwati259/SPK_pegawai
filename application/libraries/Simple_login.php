@@ -32,9 +32,11 @@ class Simple_login
       $this->CI->session->set_userdata('hak_akses',$hak_akses);
       //redirect ke halaman admin yang diproteksi
       if($hak_akses=='1'){
-      redirect(base_url('admin'),'refresh');
-      }else{
-        //redirect(base_url('page/distributor'),'refresh');
+        redirect(base_url('admin'),'refresh');
+      }else  if($hak_akses=='2'){
+        redirect(base_url('penilaian/hasil'),'refresh');
+      }else  if($hak_akses=='3'){
+        redirect(base_url('penilaian'),'refresh');
       }
     }else{
       //kalau tidak ada, maka suruh login lagi
