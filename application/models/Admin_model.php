@@ -33,6 +33,7 @@ class Admin_model extends CI_Model
 	public function Listpegawai(){
 		$this->db->select('*');
 		$this->db->from('pegawai');
+		$this->db->where('status',1);
 		$this->db->order_by('nama','asc');
 		$query = $this->db->get();
 		return $query->result();
@@ -62,18 +63,14 @@ class Admin_model extends CI_Model
 		return $query->row();
 	}
 	public function del_pegawai($nip){
-		$this->db->delete('penilaian', array('nip' => $nip));
-		$this->db->delete('hasil', array('nip' => $nip));
-		$this->db->delete('pegawai', array('nip' => $nip));
-	}
-	public function del_penilaian($nip){
-		$this->db->delete('penilaian', array('nip' => $nip));
-		$this->db->delete('pegawai', array('nip' => $nip));
+		$this->db->where('nip', $nip);
+		$this->db->update('pegawai', array('status' => 0));
 	}
 	// kriteria
 	public function kriteria(){
 		$this->db->select('*');
 		$this->db->from('kriteria');
+		$this->db->where('status', 1);
 		$this->db->order_by('id_kriteria','asc');
 		$query = $this->db->get();
 		return $query->result();
@@ -95,14 +92,9 @@ class Admin_model extends CI_Model
 		$query = $this->db->get();
 		return $query->row();
 	}
-	public function del_kriteriaid($id){
-		$this->db->delete('nilai_kriteria', array('id_kriteria' => $id));
-		$this->db->delete('bobot', array('id_kriteria' => $id));
-		$this->db->delete('kriteria', array('id_kriteria' => $id));
-	}
 	public function del_kriteria($id){
 		$this->db->where('id_kriteria', $id);
-		$this->db->delete('kriteria');
+		$this->db->update('kriteria',array('status' => 0));
 	}
 
 	// nilai kriteria
@@ -110,6 +102,7 @@ class Admin_model extends CI_Model
 		$this->db->select('nilai_kriteria.*,kriteria.nama_kriteria, kriteria.keterangan as ket');
 		$this->db->from('nilai_kriteria');
 		$this->db->join('kriteria','nilai_kriteria.id_kriteria = kriteria.id_kriteria', 'left');
+		$this->db->where('nilai_kriteria.status', 1);
 		$this->db->order_by('nilai_kriteria.id_nilai_kriteria','asc');
 		$query = $this->db->get();
 		return $query->result();
@@ -123,7 +116,7 @@ class Admin_model extends CI_Model
 	}
 	public function del_nilai_kriteria($id){
 		$this->db->where('id_nilai_kriteria', $id);
-		$this->db->delete('nilai_kriteria');
+		$this->db->update('nilai_kriteria',array('status' => 0));
 	}
 
 	// bobot
@@ -131,6 +124,7 @@ class Admin_model extends CI_Model
 		$this->db->select('bobot.*,kriteria.nama_kriteria, kriteria.keterangan as ket');
 		$this->db->from('bobot');
 		$this->db->join('kriteria','bobot.id_kriteria = kriteria.id_kriteria', 'left');
+		$this->db->where('bobot.status', 1);
 		$this->db->order_by('bobot.id_kriteria','asc');
 		$query = $this->db->get();
 		return $query->result();
@@ -144,6 +138,6 @@ class Admin_model extends CI_Model
 	}
 	public function del_bobot($id){
 		$this->db->where('id_bobot', $id);
-		$this->db->delete('bobot');
+		$this->db->update('bobot',array('status' => 0));
 	}
 }

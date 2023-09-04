@@ -54,7 +54,7 @@
 		                data-toggle="modal" data-target="#modal-edit">
 		                <i class="fas fa-edit" aria-hidden="true"></i></button>
 		                <!-- hapus -->
-		                <a href="<?php echo base_url('admin/del_pegawai/'.$value->nip) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini? Dengan menghapus data ini, data anda yang berkaitan dengan data ini juga akan ikut terhapus.')"><i class="fa fa-trash" aria-hidden="true"></i></a>
+		                <a href="<?php echo base_url('admin/del_pegawai/'.$value->nip) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')"><i class="fa fa-trash" aria-hidden="true"></i></a>
 	            	</td>
 	            </tr>
 	        	<?php } ?>

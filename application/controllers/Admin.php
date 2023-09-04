@@ -109,14 +109,7 @@ class Admin extends CI_Controller {
 		}
 	}
 	public function del_pegawai($nip){
-		$data_id = $this->admin_model->get_nip($nip);
-		//$nip2 = $data_id->nip;
-		$data = array('nip' => $nip);
-		if($data_id){
-			$this->admin_model->del_penilaian($nip);
-		}else{
-			$this->admin_model->del_pegawai($nip);
-		}
+		$this->admin_model->del_pegawai($nip);
 		$this->session->set_flashdata('sukses', 'Data telah dihapus');
 		redirect(base_url('admin/pegawai'), 'refresh');
 	}
@@ -171,13 +164,7 @@ class Admin extends CI_Controller {
 		}
 	}
 	public function del_kriteria($id){
-		$data_id = $this->admin_model->get_kriteria($id);
-		print_r($data_id);
-		if($data_id){
-			$this->admin_model->del_kriteriaid($id);
-		}else{
-			$this->admin_model->del_kriteria($id);
-		}
+		$this->admin_model->del_kriteria($id);
 		$this->session->set_flashdata('sukses', 'Data telah dihapus');
 		redirect(base_url('admin/kriteria'), 'refresh');
 	}
@@ -241,7 +228,7 @@ class Admin extends CI_Controller {
 	public function del_nilai_kriteria($id){
 		$this->admin_model->del_nilai_kriteria($id);
 		$this->session->set_flashdata('sukses', 'Data telah dihapus');
-		redirect(base_url('admin/kriteria'), 'refresh');
+		redirect(base_url('admin/nilai_kriteria'), 'refresh');
 	}
 
 	// bobot
