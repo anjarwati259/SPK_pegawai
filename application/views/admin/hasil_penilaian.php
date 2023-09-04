@@ -264,7 +264,7 @@
       $rekom = $this->db->get()->row();
       // print_r($rekom);
        ?>
-      <p style="padding: 20px; font-size: 20px;">Jadi Rekomendasi Karyawan Terbaik Jatuh Kepada <b style="color: red;"><?php echo $rekom->nama ?></b> dengan Nilai <b style="color: red;"><?php echo $rekom->hasil ?></b></p>
+      <p style="padding: 20px; font-size: 20px;">Jadi Rekomendasi Karyawan Terbaik Jatuh Kepada <b style="color: red;"><?= (isset($rekom->nama)) ? ($rekom->nama):'' ?></b> dengan Nilai <b style="color: red;"><?= (isset($rekom->hasil)) ? ($rekom->hasil) : '' ?></b></p>
     </div>
     <!-- /.card -->
 
